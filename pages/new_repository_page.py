@@ -6,7 +6,7 @@ from selenium.webdriver.support import expected_conditions as ec
 
 class NewRepositoryPage(BasePage):
 
-    def create_new_repository(self, name_new_repository: str):
+    def create_new_repository(self, name_new_repository: str = "repository_test"):
         """Создаем новый репозиторий"""
         self.add_name_repository(name_new_repository)
         self.create_repository()

@@ -8,8 +8,8 @@ Implement Test Automation Framework
 
 * Requirements:
     * At least 5 e2e tests:
-        * a. Correct user is logged in
-        * b. Create repository
+        * a. Correct user is logged in +
+        * b. Create repository +
         * c. Rename repository
         * d. Add README
         * e. Delete repository

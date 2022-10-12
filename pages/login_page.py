@@ -1,15 +1,24 @@
 from .base_page import BasePage
 from .locators import LoginPageLocators
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+import time
+
 
 class LoginPage(BasePage):
 
     def authentication_user(self, username, password):
         """Аутентификация пользователя"""
-        login_field = self.get_element(*LoginPageLocators.LOGIN_FIELD)
+        login_field = WebDriverWait(self.browser, 5).until(ec.visibility_of_element_located(LoginPageLocators.LOGIN_FIELD))
         login_field.send_keys(username)
-        password_field = self.get_element(*LoginPageLocators.PASSWORD_FIELD)
+        password_field = WebDriverWait(self.browser, 5).until(ec.visibility_of_element_located(LoginPageLocators.PASSWORD_FIELD))
         password_field.send_keys(password)
         self.get_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
+        if "verified-device" in self.browser.current_url:
+            print("For authentication take number")
+            self.browser.get_screenshot_as_file("screens/screen_shot_verified_device.png")
+            time.sleep(20)
+
 
 
     def should_be_login_url(self):
