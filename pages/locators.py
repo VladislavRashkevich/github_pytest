@@ -40,7 +40,7 @@ class RepositoryPageLocators():
     FILE_IN_REPOSITORY = (By.CSS_SELECTOR, 'div[aria-labelledby="files"] a.Link--primary')
 
 class RepositorySettingPageLocators():
-    BUTTON_DELETE_REPOSITORY = (By.XPATH, "//summary['text()=Delete this repository']")
+    # BUTTON_DELETE_REPOSITORY = (By.XPATH, "//summary['text()=Delete this repository']")
     RENAME_FIELD = (By.CSS_SELECTOR, "#rename-field")
     RENAME_BUTTON = (By.CSS_SELECTOR, "form.d-flex button")
 
@@ -52,3 +52,5 @@ class RepositorySettingPageLocators():
 
     ASSERT_CONFIRM_PASSWORD_FIELD = (By.CSS_SELECTOR, '#sudo_password')
     ACCESS_CONFIRM_BUTTON = (By.XPATH, '//button[contains(text(), "Confirm")]')
+
+    MESSAGE_REPOSITORY_EMPTY = (By.CSS_SELECTOR, "#user-repositories-list h2")

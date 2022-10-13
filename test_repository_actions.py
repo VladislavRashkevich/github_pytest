@@ -42,7 +42,7 @@ class TestUserCanCreateRepository:
         page_repository_setting.rename_repository(new_name_repository)
         page_repository_setting.should_be_rename_repository(new_name_repository)
 
-    @pytest.mark.prob_test
+
     def test_user_can_add_readme(self, browser):
         page = MainUserPage(browser, self.link)
         page.go_to_repository_page()
@@ -56,9 +56,15 @@ class TestUserCanCreateRepository:
         readme_page.should_be_readme_in_list_files_in_repository()
         time.sleep(10)
 
+    @pytest.mark.prob_test
+    def test_user_can_delete_repository(self, browser):
+        page = MainUserPage(browser, self.link)
+        page.go_to_repository_page()
+        page_repository = RepositoryPage(browser, browser.current_url)
+        page_repository.go_to_repository_setting()
+        page_repository_setting = RepositorySettingPage(browser, browser.current_url)
+        page_repository_setting.delete_repository()
+        page_repository_setting.should_be_message_repository_is_empty()
+        time.sleep(15)
 
-
-
-    # def test_user_can_delete_repository(self, browser):
-    #     pass
 
