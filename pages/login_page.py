@@ -9,17 +9,20 @@ class LoginPage(BasePage):
 
     def authentication_user(self, username, password):
         """Аутентификация пользователя"""
-        login_field = WebDriverWait(self.browser, 7).until(ec.visibility_of_element_located(LoginPageLocators.LOGIN_FIELD))
+        login_field = WebDriverWait(self.browser, 7).until(
+            ec.visibility_of_element_located(LoginPageLocators.LOGIN_FIELD))
         login_field.send_keys(username)
-        password_field = WebDriverWait(self.browser, 7).until(ec.visibility_of_element_located(LoginPageLocators.PASSWORD_FIELD))
+
+        password_field = WebDriverWait(self.browser, 7).until(
+            ec.visibility_of_element_located(LoginPageLocators.PASSWORD_FIELD))
         password_field.send_keys(password)
+
         self.get_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
+
         if "verified-device" in self.browser.current_url:
             print("For authentication take number")
             self.browser.get_screenshot_as_file("screens/screen_shot_verified_device.png")
             time.sleep(30)
-
-
 
     def should_be_login_url(self):
         """Рнализуем проверку на корректный URL-адресс"""

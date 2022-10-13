@@ -14,9 +14,6 @@ class LoginPageLocators():
 
 
 class MainUserPageLocators():
-    # REPOSITORY_NAME_FIELD = (By.CSS_SELECTOR, '#new_repository input[aria-label="repository name"]')
-    # PUBLIC_REPOSITORY = (By.CSS_SELECTOR, '#new_repository input[value="public"]')
-    # PRIVAT_REPOSITORY = (By.CSS_SELECTOR, '#new_repository input[value="private"]')
     CREATE_NEW_REPOSITORY_BUTTON = (By.CSS_SELECTOR, 'aside[aria-label="Account"] a[href="/new"]')
     REPOSITORY_LINK = (By.CSS_SELECTOR, 'aside ul li a.markdown-title')
 
@@ -25,6 +22,7 @@ class NewRepositoryPageLocators():
     NAME_NEW_REPOSITORY = (By.CSS_SELECTOR, "#repository_name")
     BUTTON_CREATE_REPOSITORY = (By.CSS_SELECTOR, "button[data-disable-with='Creating repository&hellip;']")
 
+
 class ReadmePageLocators():
     MAIN_README_FIELD = (By.CSS_SELECTOR, 'textarea[data-hotkey-scope-id="code-editor"]')
     COMMIT_TITLE_FIELD = (By.CSS_SELECTOR, '#commit-summary-input')
@@ -32,15 +30,13 @@ class ReadmePageLocators():
     SUBMIT_FILE_BUTTON = (By.CSS_SELECTOR, '#submit-file')
 
 
-
-
 class RepositoryPageLocators():
     SETTING_REPOSITORY_TAB = (By.CSS_SELECTOR, '#settings-tab')
     LINK_EMPTY_README = (By.CSS_SELECTOR, "a[data-ga-click*='Clicked README link']")
     FILE_IN_REPOSITORY = (By.CSS_SELECTOR, 'div[aria-labelledby="files"] a.Link--primary')
 
+
 class RepositorySettingPageLocators():
-    # BUTTON_DELETE_REPOSITORY = (By.XPATH, "//summary['text()=Delete this repository']")
     RENAME_FIELD = (By.CSS_SELECTOR, "#rename-field")
     RENAME_BUTTON = (By.CSS_SELECTOR, "form.d-flex button")
 

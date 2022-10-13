@@ -10,13 +10,7 @@ class MainUserPage(BasePage):
         new_button = WebDriverWait(self.browser, 5).until(ec.element_to_be_clickable(MainUserPageLocators.CREATE_NEW_REPOSITORY_BUTTON))
         new_button.click()
 
-    # def get_all_repositories(self):
-    #     elements = WebDriverWait(self.browser, 5).until(ec.presence_of_all_elements_located())
-    #     return
-
-
     def go_to_repository_page(self):
         repository_link = self.browser.find_element(*MainUserPageLocators.REPOSITORY_LINK)
         repository_link.click()
-        # link = self.browser.current_url + '/' + username + '/' + repository_name
-        # self.browser.get(link)
+
