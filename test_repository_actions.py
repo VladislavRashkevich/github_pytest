@@ -4,6 +4,7 @@ from .pages.main_user_page import MainUserPage
 from .pages.new_repository_page import NewRepositoryPage
 from .pages.repository_page import RepositoryPage
 from .pages.repository_setting_page import RepositorySettingPage
+from .pages.readme_page import ReadmePage
 import pytest
 import time
 
@@ -29,7 +30,7 @@ class TestUserCanCreateRepository:
         create_new_repository_page.create_new_repository(name_new_repository)
         create_new_repository_page.new_repository_was_created(name_new_repository)
 
-    @pytest.mark.prob_test
+
     def test_user_can_rename_repository(self, browser):
         page = MainUserPage(browser, self.link)
         page.go_to_repository_page()
@@ -41,10 +42,23 @@ class TestUserCanCreateRepository:
         page_repository_setting.rename_repository(new_name_repository)
         page_repository_setting.should_be_rename_repository(new_name_repository)
 
+    @pytest.mark.prob_test
+    def test_user_can_add_readme(self, browser):
+        page = MainUserPage(browser, self.link)
+        page.go_to_repository_page()
+        repository_page = RepositoryPage(browser, browser.current_url)
+        repository_page.go_to_new_readme_page()
+        readme_page = ReadmePage(browser, browser.current_url)
+        readme_page.add_information_in_readme()
+        readme_page.add_commit_title_for_readme_page()
+        readme_page.add_commit_description_for_readme_page()
+        readme_page.go_commit_new_file()
+        readme_page.should_be_readme_in_list_files_in_repository()
+        time.sleep(10)
 
-    def test_user_can_add_readme(self):
-        pass
 
-    def test_user_can_delete_repository(self, browser):
-        pass
+
+
+    # def test_user_can_delete_repository(self, browser):
+    #     pass
 

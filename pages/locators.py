@@ -25,12 +25,30 @@ class NewRepositoryPageLocators():
     NAME_NEW_REPOSITORY = (By.CSS_SELECTOR, "#repository_name")
     BUTTON_CREATE_REPOSITORY = (By.CSS_SELECTOR, "button[data-disable-with='Creating repository&hellip;']")
 
+class ReadmePageLocators():
+    MAIN_README_FIELD = (By.CSS_SELECTOR, 'textarea[data-hotkey-scope-id="code-editor"]')
+    COMMIT_TITLE_FIELD = (By.CSS_SELECTOR, '#commit-summary-input')
+    COMMIT_DESCRIPTION_FIELD = (By.CSS_SELECTOR, '#commit-description-textarea')
+    SUBMIT_FILE_BUTTON = (By.CSS_SELECTOR, '#submit-file')
+
+
+
 
 class RepositoryPageLocators():
     SETTING_REPOSITORY_TAB = (By.CSS_SELECTOR, '#settings-tab')
-
+    LINK_EMPTY_README = (By.CSS_SELECTOR, "a[data-ga-click*='Clicked README link']")
+    FILE_IN_REPOSITORY = (By.CSS_SELECTOR, 'div[aria-labelledby="files"] a.Link--primary')
 
 class RepositorySettingPageLocators():
     BUTTON_DELETE_REPOSITORY = (By.XPATH, "//summary['text()=Delete this repository']")
     RENAME_FIELD = (By.CSS_SELECTOR, "#rename-field")
     RENAME_BUTTON = (By.CSS_SELECTOR, "form.d-flex button")
+
+    DELETE_REPOSITORY_BUTTON = (By.XPATH, "//li//summary[contains(text(), 'Delete this repository')]")
+
+    STRING_TO_CONFIRM_FOR_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] p:nth-child(2) strong')
+    FIELD_TO_CONFIRM_FOR_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] p input')
+    BUTTON_TO_CONFIRM_FOR_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] form button')
+
+    ASSERT_CONFIRM_PASSWORD_FIELD = (By.CSS_SELECTOR, '#sudo_password')
+    ACCESS_CONFIRM_BUTTON = (By.XPATH, '//button[contains(text(), "Confirm")]')
