@@ -5,21 +5,27 @@ from .pages.repository_page import RepositoryPage
 from .pages.repository_setting_page import RepositorySettingPage
 from .pages.readme_page import ReadmePage
 import pytest
+import allure
 import time
 
 
+@allure.feature("Actions with repositories")
 class TestUserCanCreateRepository:
 
     @pytest.fixture(scope="function", autouse=True)
+    @allure.severity(allure.severity_level.CRITICAL)
+    @allure.step("Sign in")
     def setup(self, browser):
         link = "https://github.com/login"
         login_page = LoginPage(browser, link)
         login_page.open()
-        username = "VladislavTest"
-        password = "SecondTestAcc123"
-        login_page.authentication_user(username, password)
+        # username = "VladislavTest"
+        # password = "SecondTestAcc123"
+        login_page.authentication_user()
         self.link = browser.current_url
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story('Create new repository')
     def test_user_can_create_new_repository(self, browser):
         page = MainUserPage(browser, self.link)
         page.go_to_page_for_create_new_repository()
@@ -28,6 +34,8 @@ class TestUserCanCreateRepository:
         create_new_repository_page.create_new_repository(name_new_repository)
         create_new_repository_page.new_repository_was_created(name_new_repository)
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story('Rename repository')
     def test_user_can_rename_repository(self, browser):
         page = MainUserPage(browser, self.link)
         page.go_to_repository_page()
@@ -39,6 +47,8 @@ class TestUserCanCreateRepository:
         page_repository_setting.rename_repository(new_name_repository)
         page_repository_setting.should_be_rename_repository(new_name_repository)
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story('Add readme in new repository')
     def test_user_can_add_readme(self, browser):
         page = MainUserPage(browser, self.link)
         page.go_to_repository_page()
@@ -51,6 +61,8 @@ class TestUserCanCreateRepository:
         readme_page.go_commit_new_file()
         readme_page.should_be_readme_in_list_files_in_repository()
 
+    @allure.severity(allure.severity_level.NORMAL)
+    @allure.story('Delete repository')
     def test_user_can_delete_repository(self, browser):
         page = MainUserPage(browser, self.link)
         page.go_to_repository_page()
