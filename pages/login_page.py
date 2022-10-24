@@ -7,22 +7,17 @@ from ..utilits.exceptions import DdosVerificationError
 
 
 class LoginPage(BasePage):
-    def __init__(self, *args, **kwargs):
-        super(LoginPage, self).__init__(*args, **kwargs)
 
-        self.username = "VladislavTest"
-        self.password = "SecondTestAcc123"
-
-    @allure.step('user authentication')
-    def authentication_user(self):
+    @allure.step('User authentication')
+    def authentication_user(self, username, password):
         """user authentication"""
         login_field = self.wait.until(
             ec.visibility_of_element_located(LoginPageLocators.LOGIN_FIELD))
-        login_field.send_keys(self.username)
+        login_field.send_keys(username)
 
         password_field = self.wait.until(
             ec.visibility_of_element_located(LoginPageLocators.PASSWORD_FIELD))
-        password_field.send_keys(self.password)
+        password_field.send_keys(password)
 
         self.get_element(*LoginPageLocators.SIGN_IN_BUTTON).click()
 

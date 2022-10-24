@@ -12,7 +12,7 @@ class BasePage():
         self.browser = browser
         self.timeout = timeout
         self.wait = WebDriverWait(self.browser, self.timeout)
-        self.browser_helper = browser_helper
+        self.browser_helper = browser_helper(self.browser)
 
     @allure.step("Open page")
     def open(self):
@@ -26,10 +26,10 @@ class BasePage():
         login_link = self.wait.until(ec.element_to_be_clickable(BasePageLocators.LOGIN_LINK))
         login_link.click()
 
-    @allure.step("user authorization check")
+    @allure.step("User authorization check")
     def should_be_authorized_user(self):
         assert self.browser_helper.is_element_present(*BasePageLocators.USER_ICON), "User was not authorized"
 
-    @allure.step("checking for a link to the login page")
+    @allure.step("Checking for a link to the login page")
     def should_be_login_link(self):
         assert self.browser_helper.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not present in page"

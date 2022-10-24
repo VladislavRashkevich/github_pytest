@@ -7,6 +7,7 @@ from .pages.new_repository_page import NewRepositoryPage
 from .pages.repository_page import RepositoryPage
 from .pages.repository_setting_page import RepositorySettingPage
 from .pages.readme_page import ReadmePage
+from .config import USERNAME, PASSWORD
 
 
 @allure.feature("Actions with repositories")
@@ -19,9 +20,7 @@ class TestUserCanCreateRepository:
         link = "https://github.com/login"
         login_page = LoginPage(browser, link)
         login_page.open()
-        # username = "VladislavTest"
-        # password = "SecondTestAcc123"
-        login_page.authentication_user()
+        login_page.authentication_user(USERNAME, PASSWORD)
         self.link = browser.current_url
 
     @pytest.mark.create_rep

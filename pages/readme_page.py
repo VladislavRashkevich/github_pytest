@@ -2,17 +2,9 @@ import allure
 from .base_page import BasePage
 from .locators import ReadmePageLocators, RepositoryPageLocators
 from selenium.webdriver.support import expected_conditions as ec
-
+from ..config import TEXT_TO_README
 
 class ReadmePage(BasePage):
-    README_TITLE = "README.md"
-
-    text_to_readme = \
-        """<h1>hello Readme</h1>
-    I created you with a few problems, but...
-    if you here, i have a success!!!! 
-    Cheers !!! 
-    """
 
     @allure.step('Add commit title {commit_title} for readme')
     def add_commit_title_for_readme_page(self, commit_title="Create README.md"):
@@ -36,7 +28,7 @@ class ReadmePage(BasePage):
             ec.visibility_of_element_located(ReadmePageLocators.MAIN_README_FIELD)
         )
         link_empty_readme.clear()
-        link_empty_readme.send_keys(ReadmePage.text_to_readme)
+        link_empty_readme.send_keys(TEXT_TO_README)
 
     @allure.step('Commiting file')
     def go_commit_new_file(self):
