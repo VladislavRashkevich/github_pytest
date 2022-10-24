@@ -1,8 +1,10 @@
+import allure
+import pytest
 from .pages.main_page import MainPage
 from .pages.login_page import LoginPage
-import allure
 
 
+@pytest.mark.first
 @allure.severity(allure.severity_level.CRITICAL)
 @allure.story('Регистрация пользователя со стартовой страницы')
 def test_guest_can_authentication_from_start_page(browser):

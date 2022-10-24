@@ -1,12 +1,12 @@
+import pytest
+import allure
+import time
 from .pages.login_page import LoginPage
 from .pages.main_user_page import MainUserPage
 from .pages.new_repository_page import NewRepositoryPage
 from .pages.repository_page import RepositoryPage
 from .pages.repository_setting_page import RepositorySettingPage
 from .pages.readme_page import ReadmePage
-import pytest
-import allure
-import time
 
 
 @allure.feature("Actions with repositories")
@@ -24,6 +24,7 @@ class TestUserCanCreateRepository:
         login_page.authentication_user()
         self.link = browser.current_url
 
+    @pytest.mark.create_rep
     @allure.severity(allure.severity_level.NORMAL)
     @allure.story('Create new repository')
     def test_user_can_create_new_repository(self, browser):
@@ -47,6 +48,7 @@ class TestUserCanCreateRepository:
         page_repository_setting.rename_repository(new_name_repository)
         page_repository_setting.should_be_rename_repository(new_name_repository)
 
+    @pytest.mark.add_readme
     @allure.severity(allure.severity_level.NORMAL)
     @allure.story('Add readme in new repository')
     def test_user_can_add_readme(self, browser):
@@ -61,6 +63,7 @@ class TestUserCanCreateRepository:
         readme_page.go_commit_new_file()
         readme_page.should_be_readme_in_list_files_in_repository()
 
+    @pytest.mark.delete_rep
     @allure.severity(allure.severity_level.NORMAL)
     @allure.story('Delete repository')
     def test_user_can_delete_repository(self, browser):

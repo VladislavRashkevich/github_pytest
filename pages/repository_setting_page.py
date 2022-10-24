@@ -9,38 +9,38 @@ class RepositorySettingPage(BasePage):
 
     @allure.step('Delete repository')
     def delete_repository(self):
-        delete_repository_button = WebDriverWait(self.browser, 7).until(
+        delete_repository_button = self.wait.until(
             ec.element_to_be_clickable(RepositorySettingPageLocators.DELETE_REPOSITORY_BUTTON)
         )
         delete_repository_button.click()
 
-        string_to_confirm = WebDriverWait(self.browser, 5).until(
+        string_to_confirm = self.wait.until(
             ec.visibility_of_element_located(RepositorySettingPageLocators.STRING_TO_CONFIRM_FOR_DELETE_REPOSITORY)
         )
 
-        field_to_confirm = WebDriverWait(self.browser, 5).until(
+        field_to_confirm = self.wait.until(
             ec.visibility_of_element_located(RepositorySettingPageLocators.FIELD_TO_CONFIRM_FOR_DELETE_REPOSITORY)
         )
         field_to_confirm.send_keys(string_to_confirm.text)
 
-        button_confirm = WebDriverWait(self.browser, 7).until(
+        button_confirm = self.wait.until(
             ec.element_to_be_clickable(RepositorySettingPageLocators.BUTTON_TO_CONFIRM_FOR_DELETE_REPOSITORY)
         )
         button_confirm.click()
 
     @allure.step('Rename repository')
     def rename_repository(self, new_name_repository):
-        rename_field = WebDriverWait(self.browser, 5).until(
+        rename_field = self.wait.until(
             ec.visibility_of_element_located(RepositorySettingPageLocators.RENAME_FIELD))
         rename_field.clear()
         rename_field.send_keys(new_name_repository)
-        rename_button = WebDriverWait(self.browser, 7).until(
+        rename_button = self.wait.until(
             ec.element_to_be_clickable(RepositorySettingPageLocators.RENAME_BUTTON))
         rename_button.click()
 
     @allure.step('Check message about empty repository')
     def should_be_message_repository_is_empty(self):
-        empty_repository_message = WebDriverWait(self.browser, 5).until(
+        empty_repository_message = self.wait.until(
             ec.visibility_of_element_located(RepositorySettingPageLocators.MESSAGE_REPOSITORY_EMPTY))
         message_text = empty_repository_message.text
 

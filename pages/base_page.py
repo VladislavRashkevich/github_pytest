@@ -1,20 +1,18 @@
+import allure
+from test_first_task.config import WAIT_TIME
 from .locators import BasePageLocators
-from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
-import allure
+from test_first_task.utilits.browser_helper import BrowserHelper
+
 
 class BasePage():
-    def __init__(self, browser, url):
+    def __init__(self, browser, url, timeout=WAIT_TIME, browser_helper=BrowserHelper):
         self.url = url
         self.browser = browser
-
-    def is_element_present(self, how, what):
-        try:
-            self.browser.find_element(how, what)
-        except NoSuchElementException:
-            return False
-        return True
+        self.timeout = timeout
+        self.wait = WebDriverWait(self.browser, self.timeout)
+        self.browser_helper = browser_helper
 
     @allure.step("Open page")
     def open(self):
@@ -25,13 +23,13 @@ class BasePage():
 
     @allure.step("Open login page")
     def go_to_login_page(self):
-        login_link = WebDriverWait(self.browser, 8).until(ec.element_to_be_clickable(BasePageLocators.LOGIN_LINK))
+        login_link = self.wait.until(ec.element_to_be_clickable(BasePageLocators.LOGIN_LINK))
         login_link.click()
 
-    @allure.step("icon user is authentication")
+    @allure.step("user authorization check")
     def should_be_authorized_user(self):
-        assert self.is_element_present(*BasePageLocators.USER_ICON), "User was not authorized"
+        assert self.browser_helper.is_element_present(*BasePageLocators.USER_ICON), "User was not authorized"
 
-    @allure.step("login-link on the page")
+    @allure.step("checking for a link to the login page")
     def should_be_login_link(self):
-        assert self.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not present in page"
+        assert self.browser_helper.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not present in page"
