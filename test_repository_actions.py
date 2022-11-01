@@ -6,7 +6,7 @@ from .pages.new_repository_page import NewRepositoryPage
 from .pages.repository_page import RepositoryPage
 from .pages.repository_setting_page import RepositorySettingPage
 from .pages.readme_page import ReadmePage
-from .config import USERNAME, PASSWORD, LOGIN_PAGE_LINK, NEW_REPO_NAME
+from .config import USERNAME, PASSWORD, LOGIN_PAGE_LINK, NAME_NEW_REPOSITORY, NEW_REPO_NAME
 
 
 @allure.feature("Actions with repositories")
@@ -24,11 +24,10 @@ class TestUserCanCreateRepository:
     @pytest.mark.create_rep
     @allure.severity(allure.severity_level.NORMAL)
     @allure.story('Create new repository')
-    def test_user_can_create_new_repository(self, browser):
+    def test_user_can_create_new_repository(self, browser, name_new_repository=NAME_NEW_REPOSITORY):
         page = MainUserPage(browser, self.link)
         page.go_to_page_for_create_new_repository()
         create_new_repository_page = NewRepositoryPage(browser, browser.current_url)
-        name_new_repository = "test_rep"
         create_new_repository_page.create_new_repository(name_new_repository)
         create_new_repository_page.new_repo_should_be_created(name_new_repository)
 

@@ -6,6 +6,7 @@ LOGIN_PAGE_LINK = "https://github.com/login"
 USERNAME = "VladislavTest"
 PASSWORD = "SecondTestAcc123"
 
+NAME_NEW_REPOSITORY = "test_rep"
 NEW_REPO_NAME = "new_rep"
 
 README_TITLE = "README.md"
