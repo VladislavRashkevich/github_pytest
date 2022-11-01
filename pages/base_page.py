@@ -18,7 +18,9 @@ class BasePage():
     def open(self):
         self.browser.get(self.url)
 
+    @allure.step("Get element")
     def get_element(self, how, what):
+        """Get element without expected"""
         return self.browser.find_element(how, what)
 
     @allure.step("Open login page")
@@ -26,10 +28,19 @@ class BasePage():
         login_link = self.wait.until(ec.element_to_be_clickable(BasePageLocators.LOGIN_LINK))
         login_link.click()
 
-    @allure.step("User authorization check")
+    @allure.step("User authorization verification")
     def should_be_authorized_user(self):
-        assert self.browser_helper.is_element_present(*BasePageLocators.USER_ICON), "User was not authorized"
+        res = self.browser_helper.is_element_present(*BasePageLocators.USER_ICON)
+        if not res:
+            allure.attach(
+                self.browser.get_screenshot_as_png(),
+                name="authorization bug",
+                attachment_type=allure.attachment_type.PNG
+            )
+        assert res, "User is not authorized"
 
-    @allure.step("Checking for a link to the login page")
+
+
+    @allure.step("Verification for a link to the login page")
     def should_be_login_link(self):
         assert self.browser_helper.is_element_present(*BasePageLocators.LOGIN_LINK), "Login link is not present in page"

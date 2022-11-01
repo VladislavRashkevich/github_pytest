@@ -16,7 +16,7 @@ Implement Test Automation Framework
     
     * PO pattern
     * Allure reporting
-    * Not using frameworks like Selen
+    * Not using frameworks like Selene
     * README
     
 

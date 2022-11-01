@@ -23,15 +23,15 @@ class LoginPage(BasePage):
 
         if "verified-device" in self.browser.current_url:
             with allure.step("Test failed due to DDoS protection"):
-                self.browser.get_screenshot_as_file("screens/screen_shot_verified_device.png")
+                allure.attach(self.browser.get_screenshot_as_png(), name="Bug screenshot", attachment_type=allure.attachment_type.PNG)
                 raise DdosVerificationError
             # print("For authentication take number")
             # self.browser.get_screenshot_as_file("screens/screen_shot_verified_device.png")
             # time.sleep(30)
 
-
-    @allure.step('Check login-form on page')
+    @allure.step('Verification login-form on page')
     def should_be_login_form(self):
-        """Реализуем проверку на форму логина"""
-        assert self.browser_helper.is_element_present(*LoginPageLocators.LOGIN_FORM), "There isnt login_form on page"
+        """Verification a login form exists"""
+        assert self.browser_helper.is_element_present(*LoginPageLocators.LOGIN_FORM_WEB_ELEMENT), "There isnt login_form on page"
+
 

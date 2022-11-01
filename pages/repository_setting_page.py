@@ -13,17 +13,17 @@ class RepositorySettingPage(BasePage):
         )
         delete_repository_button.click()
 
-        string_to_confirm = self.wait.until(
-            ec.visibility_of_element_located(RepositorySettingPageLocators.STRING_TO_CONFIRM_FOR_DELETE_REPOSITORY)
+        confirmation_string = self.wait.until(
+            ec.visibility_of_element_located(RepositorySettingPageLocators.CONFIRMATION_STRING_TO_DELETE_REPOSITORY)
         )
 
-        field_to_confirm = self.wait.until(
-            ec.visibility_of_element_located(RepositorySettingPageLocators.FIELD_TO_CONFIRM_FOR_DELETE_REPOSITORY)
+        confirmation_field = self.wait.until(
+            ec.visibility_of_element_located(RepositorySettingPageLocators.CONFIRMATION_FIELD_TO_DELETE_REPOSITORY)
         )
-        field_to_confirm.send_keys(string_to_confirm.text)
+        confirmation_field.send_keys(confirmation_string.text)
 
         button_confirm = self.wait.until(
-            ec.element_to_be_clickable(RepositorySettingPageLocators.BUTTON_TO_CONFIRM_FOR_DELETE_REPOSITORY)
+            ec.element_to_be_clickable(RepositorySettingPageLocators.CONFIRMATION_BUTTON_TO_DELETE_REPOSITORY)
         )
         button_confirm.click()
 
@@ -37,7 +37,7 @@ class RepositorySettingPage(BasePage):
             ec.element_to_be_clickable(RepositorySettingPageLocators.RENAME_BUTTON))
         rename_button.click()
 
-    @allure.step('Check message about empty repository')
+    @allure.step('Verification message about empty repository')
     def should_be_message_repository_is_empty(self):
         empty_repository_message = self.wait.until(
             ec.visibility_of_element_located(RepositorySettingPageLocators.MESSAGE_REPOSITORY_EMPTY))
@@ -45,6 +45,6 @@ class RepositorySettingPage(BasePage):
 
         assert "doesn’t have any public repositories yet" in message_text, "Repository was been not deleted"
 
-    @allure.step('Check new name repository')
+    @allure.step('Verification new name repository')
     def should_be_rename_repository(self, new_name_repository):
         assert new_name_repository in self.browser.current_url, "Repository did not rename"

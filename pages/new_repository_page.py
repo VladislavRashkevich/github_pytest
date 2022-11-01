@@ -24,7 +24,7 @@ class NewRepositoryPage(BasePage):
         button_create_repository = self.wait.until(ec.element_to_be_clickable(NewRepositoryPageLocators.BUTTON_CREATE_REPOSITORY))
         button_create_repository.click()
 
-    @allure.step('Check repository is create')
-    def new_repository_was_created(self, name_new_repository: str):
-        """'Check repository is create'"""
+    @allure.step('Verification repository is create')
+    def new_repo_should_be_created(self, name_new_repository: str):
+        """'Verification repository is create'"""
         assert name_new_repository in self.browser.current_url, "New repository was not create"

@@ -7,7 +7,7 @@ class BasePageLocators():
 
 
 class LoginPageLocators():
-    LOGIN_FORM = (By.CSS_SELECTOR, "#login")
+    LOGIN_FORM_WEB_ELEMENT = (By.CSS_SELECTOR, "#login")
     LOGIN_FIELD = (By.CSS_SELECTOR, "#login_field")
     PASSWORD_FIELD = (By.CSS_SELECTOR, "#password")
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, "input[data-signin-label='Sign in']")
@@ -42,11 +42,11 @@ class RepositorySettingPageLocators():
 
     DELETE_REPOSITORY_BUTTON = (By.XPATH, "//li//summary[contains(text(), 'Delete this repository')]")
 
-    STRING_TO_CONFIRM_FOR_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] p:nth-child(2) strong')
-    FIELD_TO_CONFIRM_FOR_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] p input')
-    BUTTON_TO_CONFIRM_FOR_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] form button')
+    CONFIRMATION_STRING_TO_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] p:nth-child(2) strong')
+    CONFIRMATION_FIELD_TO_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] p input')
+    CONFIRMATION_BUTTON_TO_DELETE_REPOSITORY = (By.CSS_SELECTOR, 'details-dialog[aria-label="Delete repository"] form button')
 
-    ASSERT_CONFIRM_PASSWORD_FIELD = (By.CSS_SELECTOR, '#sudo_password')
-    ACCESS_CONFIRM_BUTTON = (By.XPATH, '//button[contains(text(), "Confirm")]')
+    CONFIRMATION_ASSERT_PASSWORD_FIELD = (By.CSS_SELECTOR, '#sudo_password')
+    CONFIRMATION_ACCESS_BUTTON = (By.XPATH, '//button[contains(text(), "Confirm")]')
 
     MESSAGE_REPOSITORY_EMPTY = (By.CSS_SELECTOR, "#user-repositories-list h2")

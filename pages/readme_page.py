@@ -4,6 +4,7 @@ from .locators import ReadmePageLocators, RepositoryPageLocators
 from selenium.webdriver.support import expected_conditions as ec
 from ..config import TEXT_TO_README
 
+
 class ReadmePage(BasePage):
 
     @allure.step('Add commit title {commit_title} for readme')
@@ -37,7 +38,7 @@ class ReadmePage(BasePage):
         )
         submit_file_button.click()
 
-    @allure.step('Check readme in repository')
+    @allure.step('Verification readme in repository')
     def should_be_readme_in_list_files_in_repository(self):
         files_in_repositories = self.wait.until(
             ec.presence_of_all_elements_located(RepositoryPageLocators.FILE_IN_REPOSITORY)
