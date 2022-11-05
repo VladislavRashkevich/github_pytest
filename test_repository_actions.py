@@ -9,6 +9,7 @@ from .pages.readme_page import ReadmePage
 from .config import USERNAME, PASSWORD, LOGIN_PAGE_LINK, NAME_NEW_REPOSITORY, NEW_REPO_NAME
 
 
+@pytest.mark.repo_test
 @allure.feature("Actions with repositories")
 class TestUserCanCreateRepository:
 
