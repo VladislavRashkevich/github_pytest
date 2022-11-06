@@ -16,11 +16,6 @@ class BasePage():
     def open(self):
         self.browser.get(self.url)
 
-    @allure.step("Get element")
-    def get_element(self, how, what):
-        """Get element without expected"""
-        return self.browser.find_element(how, what)
-
     @allure.step("Open login page")
     def go_to_login_page(self):
         login_link = self.browser_helper.element_is_clickable(self.base_locators.LOGIN_LINK)

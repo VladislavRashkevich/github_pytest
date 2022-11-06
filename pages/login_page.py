@@ -1,5 +1,6 @@
 import time
 import allure
+from loguru import logger
 from .base_page import BasePage
 from .locators import LoginPageLocators
 from ..utilits.exceptions import DdosVerificationError
@@ -23,7 +24,9 @@ class LoginPage(BasePage):
         if "verified-device" in self.browser.current_url:
             time.sleep(20)
             with allure.step("Test failed due to DDoS protection"):
+
                 # allure.attach(self.browser.get_screenshot_as_png(), name="Bug screenshot", attachment_type=allure.attachment_type.PNG)
+                logger.error("Test failed due to DDoS protection")
                 raise DdosVerificationError
             # print("For authentication take number")
             # self.browser.get_screenshot_as_file("screens/screen_shot_verified_device.png")
