@@ -8,7 +8,7 @@ class BasePageLocators():
 
 class LoginPageLocators():
     LOGIN_FORM_WEB_ELEMENT = (By.CSS_SELECTOR, "#login")
-    LOGIN_FIELD = (By.CSS_SELECTOR, "#login_field")
+    LOGIN_FIELD = (By.CSS_SELECTOR, "#login_field")  # '#err')
     PASSWORD_FIELD = (By.CSS_SELECTOR, "#password")
     SIGN_IN_BUTTON = (By.CSS_SELECTOR, "input[data-signin-label='Sign in']")
 

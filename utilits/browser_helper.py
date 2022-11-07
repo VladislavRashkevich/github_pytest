@@ -24,7 +24,7 @@ class BrowserHelper():
             element = self.wait.until(ec.visibility_of_element_located(locator))
             return element
         except TimeoutException:
-            logger.exception(f"Timeout exception for element with locator - {locator}")
+            logger.error(f"Timeout exception for element with locator - {locator}")
 
     @allure.step("Get all visible elements")
     def elements_are_visible(self, locator):
@@ -33,7 +33,7 @@ class BrowserHelper():
             element = self.wait.until(ec.visibility_of_all_elements_located(locator))
             return element
         except TimeoutException:
-            logger.exception(f"Timeout exception for element with locator - {locator}")
+            logger.error(f"Timeout exception for element with locator - {locator}")
 
     @allure.step("Get clickable element")
     def element_is_clickable(self, locator):
@@ -42,7 +42,7 @@ class BrowserHelper():
             element = self.wait.until(ec.element_to_be_clickable(locator))
             return element
         except TimeoutException:
-            logger.exception(f"Timeout exception for element with locator - {locator}")
+            logger.error(f"Timeout exception for element with locator - {locator}")
 
     @allure.step("Send info in web-element")
     def send_keys_in_element(self, element, value):
@@ -55,6 +55,6 @@ class BrowserHelper():
         try:
             self.browser.find_element(how, what)
         except NoSuchElementException:
-            logger.exception("Element is not present")
+            logger.error("Element is not present")
             return False
         return True
