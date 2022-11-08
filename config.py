@@ -1,10 +1,15 @@
+import os
+from dotenv import load_dotenv, find_dotenv
+
+load_dotenv()
+
 WAIT_TIME = 10
 
 START_PAGE_LINK = "https://github.com"
 LOGIN_PAGE_LINK = "https://github.com/login"
 
-USERNAME = "VladislavTest"
-PASSWORD = "SecondTestAcc123"
+USERNAME = os.getenv("USERNAME_GITHUB")  # "VladislavTest"
+PASSWORD = os.getenv("PASSWORD_GITHUB")  # "SecondTestAcc123exit()
 
 NAME_NEW_REPOSITORY = "test_rep"
 NEW_REPO_NAME = "new_rep"
