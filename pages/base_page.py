@@ -1,6 +1,6 @@
 import allure
 from .locators import BasePageLocators
-from test_first_task.utilits.browser_helper import BrowserHelper
+from ..utilits.browser_helper import BrowserHelper
 
 
 class BasePage():
