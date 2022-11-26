@@ -17,8 +17,9 @@ def browser(request):
     options = Options()
     options.add_experimental_option('excludeSwitches', ['enable-logging'])
     options.add_experimental_option("prefs", {'intl.accept_languages': user_language})
-    options.add_argument("--headless")
+    # options.add_argument("--headless")
     browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+    browser.set_window_size(1920, 1080)
     yield browser
     browser.quit()
 
