@@ -3,7 +3,7 @@ from dotenv import load_dotenv, find_dotenv
 
 load_dotenv()
 
-WAIT_TIME = 10
+WAIT_TIME = 12
 
 START_PAGE_LINK = "https://github.com"
 LOGIN_PAGE_LINK = "https://github.com/login"
