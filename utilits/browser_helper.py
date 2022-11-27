@@ -17,6 +17,15 @@ class BrowserHelper():
         self.wait_time = wait_time
         self.wait = wait(self.browser, self.wait_time)
 
+    @allure.step("Get presence element")
+    def element_is_presence(self, locator):
+        logger.info(f"Get visible {locator} element")
+        try:
+            element = self.wait.until(ec.presence_of_element_located(locator))
+            return element
+        except TimeoutException:
+            logger.error(f"Timeout exception for element with locator - {locator}")
+
     @allure.step("Get visible element")
     def element_is_visible(self, locator):
         logger.info(f"Get visible {locator} element")

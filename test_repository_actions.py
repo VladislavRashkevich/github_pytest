@@ -32,6 +32,7 @@ class TestUserCanCreateRepository:
         create_new_repository_page.create_new_repository(name_new_repository)
         create_new_repository_page.new_repo_should_be_created(name_new_repository)
 
+    @pytest.mark.rename_rep
     @allure.severity(allure.severity_level.NORMAL)
     @allure.story('Rename repository')
     def test_user_can_rename_repository(self, browser, new_repo_name=NEW_REPO_NAME):
